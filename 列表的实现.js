@@ -20,6 +20,7 @@ this.next = next;//将当前位置后移一位
 this.currPos =currPos;//返回列表的当前位置
 this.moveTo =moveTo;//将当前位置移动到指定位置
 this.contains= contains;//判断值是否在列表中
+this.getParameter=getParameter;
 }
 
 
@@ -72,3 +73,59 @@ function clear(){
     this.dataStore=[];
     this.pos =this.listSize=0;
 };
+
+//测试
+/* var fruits = new mynewList();
+fruits.clear();
+console.log( fruits.toString() ); */
+
+//front方法的实现
+function front(){
+    this.pos=0;
+}
+//end方法的实现
+function end(){
+    this.pos=this.listSize -1;
+}
+//prev方法的实现
+function prev(){
+if(this.pos>0){
+    this.pos--;
+}else{
+    console.log("你当前已经在首位");
+}
+}
+//next方法的实现
+function next(){
+    if(this.pos>0){
+        this.pos++;
+    }else{
+        console.log("你当前已经在末位");
+    }
+
+}
+//moveTo方法的实现
+function moveTo(position){
+if(position<0||position>(this.listSize-1)){
+console.log("请输入正确位置")
+}else{
+    this.pos=position;
+}
+
+}
+//currPos方法的实现
+function currPos(){
+    return this.pos;
+}
+//getParameter
+function getParameter(){
+    return this.dataStore[this.pos];
+}
+//contains方法的实现
+function contains(parameter){
+    if(this.dataStore.indexOf(parameter)>-1){
+        return true;
+    }else{
+        return false;
+    }
+}
