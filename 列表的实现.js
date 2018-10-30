@@ -21,6 +21,7 @@ this.currPos =currPos;//返回列表的当前位置
 this.moveTo =moveTo;//将当前位置移动到指定位置
 this.contains= contains;//判断值是否在列表中
 this.getParameter=getParameter;
+this.length = length;
 }
 
 
@@ -129,3 +130,39 @@ function contains(parameter){
         return false;
     }
 }
+
+
+var fruits = new mynewList();
+//添加三个元素
+fruits.append('Apple');
+fruits.append('Grape');
+fruits.append('Banana');
+
+//打印列表
+console.log( fruits.toString() )      // ["Apple", "Grape", "Banana"]
+//查看列表长度
+console.log( fruits.length() )        // 3
+//查找 Banana 的位置
+console.log( fruits.find('Banana') )  // 2
+//删除 Grape 
+fruits.remove('Grape');
+console.log( fruits.toString() )      // ["Apple", "Banana"]
+fruits.append('Pear');
+fruits.append('Orange');
+fruits.append('Strawberry');
+console.log( fruits.toString() );    // ["Apple", "Grape", "Banana", "Pear", "Orange", "Strawberry"]
+
+//我们先看当前的位置和元素
+console.log( fruits.currPos() );     // 0
+console.log( fruits.getParameter() );  // Apple
+
+//我们尝试改变一下
+fruits.moveTo( 2 );
+fruits.next();
+console.log( fruits.currPos() );     // 3
+console.log( fruits.getParameter() );  // Pear
+fruits.end();
+fruits.prev();
+console.log( fruits.currPos() );     // 4
+console.log( fruits.getParameter() );  // Orange
+
